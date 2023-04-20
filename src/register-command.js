@@ -8,8 +8,8 @@ const { REST, Routes } = require('discord.js');
 // an array of objects. this will be the list of commands with their descriptions. add/remove commands here.
 const commands = [
     {
-        name: 'hey',
-        description: 'Replies with "Hey!"'
+        name: 'hey', // this will be the name of the command, eg. /hey
+        description: 'Replies with "Hey!"' // this will show up below the name of the command as a description
     },
     {
         name: 'marco',
