@@ -22,7 +22,7 @@ client.on('ready', (c) => {
 
 // listens to contents of a message sent in a Discord channel
 client.on('messageCreate', (message) => {
-    console.log(message.author + " says " + message.content); // logs the contents of the sent message
+    console.log(message.author.tag + ' says "' + message.content + '".'); // logs the contents of the sent message
 
     // this ignores messages sent by the bot (returns a null value early), to avoid infinite loops. you could also use 'if(message.author.bot)' instead if you want to apply to all bots.
     if (message.author.id === client.user.id) return;
