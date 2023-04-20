@@ -27,12 +27,13 @@ client.on('messageCreate', (message) => {
     // this ignores messages sent by the bot (returns a null value early), to avoid infinite loops. you could also use 'if(message.author.bot)' instead if you want to apply to all bots.
     if (message.author.id === client.user.id) return;
 
-    // if the message contains 'Hello' or 'hello', reply with 'Sup
+    // if the message is 'hello', reply with 'Sup!'
     if (message.content === 'hello') {
-        message.reply('Sup');
+        message.reply('Sup!');
     };
 
-    if (message.content === 'holy hell') {
+    // if a message contains the phrase 'holy hell', reply with 'new response just dropped'
+    if (message.content.includes('holy hell')) {
         message.reply('new response just dropped');
     };
 });
