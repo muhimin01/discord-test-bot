@@ -18,6 +18,7 @@ const client = new Client({
 // when client 'c' is ready, display a message to the console that the bot is live
 client.on('ready', (c) => {
     console.log(`${c.user.tag} is live!`);
+    client.user.setPresence({ activities: [{ name: 'with test tubes' }], status: 'online' }); // sets the activity and status of the bot
 });
 
 // listens to contents of a message sent in a Discord channel
