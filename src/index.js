@@ -54,6 +54,69 @@ client.on('interactionCreate', (interaction) => {
     if (interaction.commandName === 'marco') {
         interaction.reply('polo!');
     };
+
+    // add two numbers
+    if (interaction.commandName === 'add') {
+        const num1 = interaction.options.get('first-number').value; // get the value of options
+        const num2 = interaction.options.get('second-number').value;
+
+        // add the two numbers together
+        console.log(`inputs: ${num1}, ${num2}`);
+        interaction.reply(`${num1} + ${num2} = ${num1 + num2}`);
+    };
+
+    // mixes two primary colors together
+    if (interaction.commandName === 'color-mix') {
+        const color1 = interaction.options.get('first-color').value;
+        const color2 = interaction.options.get('second-color').value;
+        let newColor = 'white';
+
+        // this switch case determines the color result based on the two colors given by the user
+        console.log(`inputs: ${color1}, ${color2}`);
+        switch (color1) {
+            case 'red':
+                switch (color2) {
+                    case 'red':
+                        newColor = 'red';
+                        break;
+                    case 'green':
+                        newColor = 'yellow';
+                        break;
+                    case 'blue':
+                        newColor = 'purple';
+                        break;
+                }
+                break;
+            case 'green':
+                switch (color2) {
+                    case 'red':
+                        newColor = 'yellow';
+                        break;
+                    case 'green':
+                        newColor = 'green';
+                        break;
+                    case 'blue':
+                        newColor = 'cyan';
+                        break;
+                }
+                break;
+            case 'blue':
+                switch (color2) {
+                    case 'red':
+                        newColor = 'purple';
+                        break;
+                    case 'green':
+                        newColor = 'cyan';
+                        break;
+                    case 'blue':
+                        newColor = 'blue';
+                        break;
+                }
+                break;
+        }
+
+        interaction.reply(`${color1} and ${color2} makes ${newColor}`);
+    };
 });
 
 // runs the bot using the TOKEN constant
