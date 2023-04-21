@@ -77,10 +77,10 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
 // function that registers the slash command
 (async () => {
     try {
-        console.log('Registering slash commands...')
+        console.log(`Registering ${commands.length} slash commands...`)
 
         await rest.put(
-            Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
+            Routes.applicationCommands(CLIENT_ID), // commands are global
             { body: commands }
         )
         console.log('Slash commands registered successfully!')
