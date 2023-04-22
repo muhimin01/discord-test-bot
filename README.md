@@ -11,6 +11,7 @@ This is my first Discord bot built using discord.js. You can [add this bot to yo
 - Read messages
 - Write messages
 - Reply to messages
+- Embed links
 
 ---
 
@@ -31,3 +32,7 @@ This is my first Discord bot built using discord.js. You can [add this bot to yo
 > ### `/color-mix`
 >
 > Mixes two primary colors together.
+
+> ### `/source`
+>
+> Embeds a link to the bot's Github repository.
