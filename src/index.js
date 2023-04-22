@@ -3,7 +3,7 @@ require('dotenv').config();
 const TOKEN = process.env.DISCORD_TOKEN;
 
 // requires the discord.js library. [$ npm install discord.js]
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, EmbedBuilder, Embed } = require('discord.js');
 
 // creates a new client with intents
 const client = new Client({
@@ -117,6 +117,22 @@ client.on('interactionCreate', (interaction) => {
         }
 
         interaction.reply(`${color1} and ${color2} makes ${newColor}`);
+    };
+
+    // embeds the Github repo for the bot
+    if (interaction.commandName === 'source') {
+        const embedSource = new EmbedBuilder()
+            .setColor(0x39d353)
+            .setTitle('discord-test-bot')
+            .setURL('https://github.com/muhimin01/discord-test-bot')
+            .setAuthor({ 
+                name: '@muhimin01',
+                iconURL: 'https://avatars.githubusercontent.com/u/62156192?v=4',
+                url: 'https://github.com/muhimin01'
+            })
+            .setDescription('Check out the repo for this bot!');
+
+        interaction.reply({ embeds: [embedSource] });
     };
 });
 

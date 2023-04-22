@@ -69,6 +69,10 @@ const commands = [
                 required: true,
             },
         ]
+    },
+    {
+        name: 'source',
+        description: 'Embeds my Github repo.'
     }
 ];
 
