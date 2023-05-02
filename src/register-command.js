@@ -21,7 +21,7 @@ const primaryColors = [
     },
 ]
 
-// an array of objects. this will be the list of commands with their descriptions. add/remove commands here.
+// an array of objects. each object is a different command. add/remove commands here.
 const commands = [
     {
         name: 'hey', // this will be the name of the command
@@ -34,6 +34,7 @@ const commands = [
     {
         name: 'add',
         description: 'Add two numbers.', 
+          
         // options define the parameters that a user can/must provide
         options: [
             {
@@ -84,7 +85,7 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
         console.log(`Registering ${commands.length} slash commands...`)
 
         await rest.put(
-            Routes.applicationCommands(CLIENT_ID), // commands are global
+            Routes.applicationCommands(CLIENT_ID), // commands are global. non-global commands uses 'GUILD_ID'
             { body: commands }
         )
         console.log('Slash commands registered successfully!')

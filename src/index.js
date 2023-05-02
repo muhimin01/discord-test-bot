@@ -12,18 +12,21 @@ const client = new Client({
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.MessageContent,
+        IntentsBitField.Flags.DirectMessages,
     ],
 });
 
-// when client 'c' is ready, display a message to the console that the bot is live
-client.on('ready', (c) => {
-    console.log(`${c.user.tag} is live!`);
+// when 'client' (the bot) is ready, log a message to the console that the bot is live
+client.on('ready', () => {
+    console.log(`${client.user.tag} is live!`);
     client.user.setPresence({ activities: [{ name: 'with test tubes' }], status: 'online' }); // sets the activity and status of the bot
 });
 
 // listens to contents of a message sent in a Discord channel
 client.on('messageCreate', (message) => {
-    console.log(message.author.tag + ' says "' + message.content + '".'); // logs the contents of the sent message
+    
+    // logs the contents of the sent message
+    console.log(message.author.tag + ' says "' + message.content + '".'); 
 
     // this ignores messages sent by the bot (returns a null value early), to avoid infinite loops. you could also use 'if(message.author.bot)' instead if you want to apply to all bots.
     if (message.author.id === client.user.id) return;
@@ -41,7 +44,9 @@ client.on('messageCreate', (message) => {
 
 // event listener. triggered when a slash command is run.
 client.on('interactionCreate', (interaction) => {
-    if (!interaction.isChatInputCommand()) return;
+    
+    // checks if the interaction is a slash command
+    if (!interaction.isChatInputCommand()) return; 
 
     // logs the name of the command that is triggered
     console.log("A /" + interaction.commandName + " command is triggered.");
@@ -119,7 +124,7 @@ client.on('interactionCreate', (interaction) => {
         interaction.reply(`${color1} and ${color2} makes ${newColor}`);
     };
 
-    // embeds the Github repo for the bot
+    // embeds the Github repo for the bot with the following contents
     if (interaction.commandName === 'source') {
         const embedSource = new EmbedBuilder()
             .setColor(0x39d353)
