@@ -3,7 +3,7 @@ require('dotenv').config();
 const TOKEN = process.env.DISCORD_TOKEN;
 
 // requires the discord.js library. [$ npm install discord.js]
-const { Client, IntentsBitField, EmbedBuilder, Embed } = require('discord.js');
+const { Client, IntentsBitField, EmbedBuilder, Embed, ActivityType } = require('discord.js');
 
 // creates a new client with intents
 const client = new Client({
@@ -19,7 +19,7 @@ const client = new Client({
 // when 'client' (the bot) is ready, log a message to the console that the bot is live
 client.on('ready', () => {
     console.log(`${client.user.tag} is live!`);
-    client.user.setPresence({ activities: [{ name: 'with test tubes' }], status: 'online' }); // sets the activity and status of the bot
+    client.user.setPresence({ activities: [{ name: 'conversations', type: ActivityType.Listening }], status: 'online' }); // sets the activity and status of the bot
 });
 
 // listens to contents of a message sent in a Discord channel
