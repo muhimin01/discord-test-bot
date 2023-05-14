@@ -3,7 +3,7 @@ require('dotenv').config();
 const TOKEN = process.env.DISCORD_TOKEN;
 
 // requires the discord.js library. [$ npm install discord.js]
-const { Client, IntentsBitField, EmbedBuilder, Embed, ActivityType } = require('discord.js');
+const { Client, IntentsBitField, EmbedBuilder, ActivityType } = require('discord.js');
 
 // creates a new client with intents
 const client = new Client({
@@ -31,15 +31,16 @@ client.on('messageCreate', (message) => {
     // this ignores messages sent by the bot (returns a null value early), to avoid infinite loops. you could also use 'if(message.author.bot)' instead if you want to apply to all bots.
     if (message.author.id === client.user.id) return;
 
-    // if the message is 'hello', reply with 'Sup!'
-    if (message.content === 'hello') {
-        message.reply('Sup!');
-    };
+    // if the message is 'hello', reply with 'Sup!'.
+    if (message.content.toLowerCase() === 'hello') message.reply('Sup!');
 
-    // if a message contains the phrase 'holy hell', reply with 'new response just dropped'
-    if (message.content.includes('holy hell')) {
-        message.reply('new response just dropped');
-    };
+    // if a message starts with the phrase 'google', reply with 'holy hell'.
+    if (message.content.toLowerCase().startsWith('google')) message.reply('holy hell');
+
+    // if a message contains the phrase 'holy hell', reply with 'new response just dropped'.
+    if (message.content.toLowerCase().includes('holy hell')) message.reply('new response just dropped');
+
+    return;
 });
 
 // event listener. triggered when a slash command is run.
@@ -52,14 +53,10 @@ client.on('interactionCreate', (interaction) => {
     console.log(`A /${interaction.commandName} command is triggered.`);
 
     // if a '/hey' command is triggered, reply with 'Hey!'
-    if (interaction.commandName === 'hey') {
-        interaction.reply('Hey!');
-    };
+    if (interaction.commandName === 'hey') interaction.reply('Hey!');
 
     // marco, polo
-    if (interaction.commandName === 'marco') {
-        interaction.reply('polo!');
-    };
+    if (interaction.commandName === 'marco') interaction.reply('polo!');
 
     // add two numbers
     if (interaction.commandName === 'add') {
@@ -131,7 +128,7 @@ client.on('interactionCreate', (interaction) => {
             .setTitle('discord-test-bot')
             .setURL('https://github.com/muhimin01/discord-test-bot')
             .setAuthor({ 
-                name: '@muhimin01',
+                name: 'muhimin01',
                 iconURL: 'https://avatars.githubusercontent.com/u/62156192?v=4',
                 url: 'https://github.com/muhimin01'
             })
