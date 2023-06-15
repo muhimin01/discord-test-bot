@@ -26,7 +26,7 @@ client.on('ready', () => {
 client.on('messageCreate', (message) => {
     
     // logs the contents of the sent message
-    console.log(`${message.author.tag} says "${message.content}".`); 
+    console.log(`${message.author.username} says "${message.content}".`); 
 
     // this ignores messages sent by the bot (returns a null value early), to avoid infinite loops. you could also use 'if(message.author.bot)' instead if you want to apply to all bots.
     if (message.author.id === client.user.id) return;
