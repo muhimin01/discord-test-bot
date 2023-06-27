@@ -1,6 +1,6 @@
 // requires the .env config file, and assigns DISCORD_TOKEN to TOKEN constant. [$ npm install dotenv]
 require('dotenv').config();
-const TOKEN = process.env.DISCORD_TOKEN;
+const TOKEN = process.env.BOT_TOKEN;
 
 // requires the discord.js library. [$ npm install discord.js]
 const { Client, IntentsBitField, EmbedBuilder, ActivityType } = require('discord.js');
@@ -24,7 +24,7 @@ client.on('ready', () => {
 
 // listens to contents of a message sent in a Discord channel
 client.on('messageCreate', (message) => {
-    
+
     // logs the contents of the sent message
     console.log(`${message.author.username} says "${message.content}".`); 
 
