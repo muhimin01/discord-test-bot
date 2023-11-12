@@ -26,7 +26,7 @@ client.on('ready', () => {
 client.on('messageCreate', (message) => {
 
     // logs the contents of the sent message
-    console.log(`${message.author.username} says "${message.content}".`); 
+    console.log(`${message.author.username} says "${message.content}".`);
 
     // this ignores messages sent by the bot (returns a null value early), to avoid infinite loops. you could also use 'if(message.author.bot)' instead if you want to apply to all bots.
     if (message.author.id === client.user.id) return;
@@ -45,9 +45,9 @@ client.on('messageCreate', (message) => {
 
 // event listener. triggered when a slash command is run.
 client.on('interactionCreate', (interaction) => {
-    
+
     // checks if the interaction is a slash command
-    if (!interaction.isChatInputCommand()) return; 
+    if (!interaction.isChatInputCommand()) return;
 
     // logs the name of the command that is triggered
     console.log(`A /${interaction.commandName} command is triggered.`);
@@ -127,7 +127,7 @@ client.on('interactionCreate', (interaction) => {
             .setColor(0x39d353)
             .setTitle('discord-test-bot')
             .setURL('https://github.com/muhimin01/discord-test-bot')
-            .setAuthor({ 
+            .setAuthor({
                 name: 'muhimin01',
                 iconURL: 'https://avatars.githubusercontent.com/u/62156192?v=4',
                 url: 'https://github.com/muhimin01'
